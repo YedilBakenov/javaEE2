@@ -5,7 +5,6 @@ import entity.Apartment;
 import java.util.ArrayList;
 
 public class DBManager {
-
     public static ArrayList<Apartment> collections = new ArrayList<>();
 
     public  static int id = 6;

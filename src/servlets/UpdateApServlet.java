@@ -1,5 +1,6 @@
 package servlets;
 
+import db.DBConnection;
 import db.DBManager;
 import entity.Apartment;
 import jakarta.servlet.ServletException;
@@ -23,14 +24,14 @@ public class UpdateApServlet extends HttpServlet {
         int room = Integer.parseInt(request.getParameter("room"));
         int id = Integer.parseInt(request.getParameter("id"));
 
-        Apartment ap = DBManager.getApById(id);
+        Apartment ap = DBConnection.getApById(id);
         ap.setFloor(floor);
         ap.setHeight(height);
         ap.setRoom(room);
         ap.setSize(size);
         ap.setPrice(price);
 
-        DBManager.updateAp(ap);
+        DBConnection.updateAp(ap);
 
         response.sendRedirect("/main");
 

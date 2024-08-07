@@ -1,5 +1,6 @@
 package servlets;
 
+import db.DBConnection;
 import db.DBManager;
 import entity.Apartment;
 import jakarta.servlet.ServletException;
@@ -36,9 +37,9 @@ public class AddApServlet extends HttpServlet {
         ap.setSize(size);
         ap.setPrice(price);
 
-        DBManager.addAp(ap);
+        DBConnection.addAp(ap);
 
-        response.sendRedirect("main");
+        response.sendRedirect("/main");
 
 
     }

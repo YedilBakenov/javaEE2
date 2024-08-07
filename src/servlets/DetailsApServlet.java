@@ -1,5 +1,6 @@
 package servlets;
 
+import db.DBConnection;
 import db.DBManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +19,7 @@ public class DetailsApServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
 
-        request.setAttribute("kv", DBManager.getApById(id));
+        request.setAttribute("kv", DBConnection.getApById(id));
 
         request.getRequestDispatcher("/details-ap.jsp").forward(request, response);
 

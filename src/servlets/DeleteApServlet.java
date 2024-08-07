@@ -1,5 +1,6 @@
 package servlets;
 
+import db.DBConnection;
 import db.DBManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +19,7 @@ public class DeleteApServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
 
-        DBManager.deleteApById(id);
+        DBConnection.deleteApById(id);
 
         response.sendRedirect("/main");
 
