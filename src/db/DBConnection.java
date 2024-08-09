@@ -1,6 +1,7 @@
 package db;
 
 import entity.Apartment;
+import entity.City;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,12 +22,40 @@ public class DBConnection {
         }
     }
 
+    public static ArrayList<City>getAllCities(){
+        ArrayList<City>list = new ArrayList<>();
+
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM cities ");
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()){
+                City city = new City();
+                city.setId(resultSet.getInt("id"));
+                city.setName(resultSet.getString("name"));
+                city.setRegion(resultSet.getString("region"));
+
+                list.add(city);
+            }
+
+            resultSet.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
 
     public static ArrayList<Apartment> getAllApp() {
         ArrayList<Apartment> list = new ArrayList<>();
 
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM apartments ORDER BY id ASC ");
+            PreparedStatement statement = connection.prepareStatement("SELECT * " +
+                    "FROM apartments ap " +
+                    "INNER JOIN cities c on c.id = ap.city_id ORDER BY ap.id ASC ");
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -38,6 +67,13 @@ public class DBConnection {
                 ap.setFloor(resultSet.getInt("floor"));
                 ap.setSize(resultSet.getDouble("size"));
                 ap.setRoom(resultSet.getInt("room"));
+
+                City city = new City();
+                city.setId(resultSet.getInt("city_id"));
+                city.setName(resultSet.getString("name"));
+                city.setRegion(resultSet.getString("region"));
+
+                ap.setCity(city);
 
                 list.add(ap);
 

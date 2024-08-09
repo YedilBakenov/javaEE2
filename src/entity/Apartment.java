@@ -1,24 +1,25 @@
 package entity;
 
 public class Apartment {
-
     private int id;
     private double size;
     private int room;
     private double height;
     private double price;
     private int floor;
+    private City city;
 
     public Apartment() {
     }
 
-    public Apartment(int id, double size, int room, double height, double price, int floor) {
+    public Apartment(int id, double size, int room, double height, double price, int floor, City city) {
         this.size = size;
         this.room = room;
         this.height = height;
         this.price = price;
         this.floor = floor;
         this.id = id;
+        this.city = city;
     }
 
     public double getSize() {
@@ -67,5 +68,13 @@ public class Apartment {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }

@@ -18,7 +18,8 @@ public class AddApServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-      response.sendRedirect("/add-ap.jsp");
+        request.setAttribute("g", DBConnection.getAllCities());
+        request.getRequestDispatcher("/add-ap.jsp").forward(request, response);
 
     }
 
