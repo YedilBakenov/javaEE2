@@ -34,6 +34,9 @@
                         FLOOR
                     </th>
                     <th>
+                        CITY
+                    </th>
+                    <th>
                         DETAILS
                     </th>
                 </tr>
@@ -53,6 +56,7 @@
                     <td><%=ap.getHeight()%></td>
                     <td><%=ap.getPrice()%></td>
                     <td><%=ap.getFloor()%></td>
+                    <td><%=ap.getCity().getName()%>/<%=ap.getCity().getRegion()%></td>
                     <td style="width: 8%"><a class="btn btn-sm btn-secondary" href="/details-ap?id=<%=ap.getId()%>">DETAILS</a> </td>
                 </tr>
 

@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="entity.Apartment" %>
+<%@ page import="entity.City" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -69,6 +70,20 @@
                             <input type="number" name="floor" class="form-control" value="<%=ap.getFloor()%>">
                         </div>
                     </div>
+                </div>
+                <div class="mt-3">
+                    <select class="form-select" name="city_id">
+                        <%
+                            ArrayList<City> cities = (ArrayList<City>) request.getAttribute("cities");
+                            if (cities != null) {
+                                for (City c : cities) {
+                        %>
+                        <option value="<%=c.getId()%>"><%=c.getName()%></option>
+                        <%
+                                }
+                            }
+                        %>
+                    </select>
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">

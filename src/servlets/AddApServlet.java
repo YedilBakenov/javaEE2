@@ -3,6 +3,7 @@ package servlets;
 import db.DBConnection;
 import db.DBManager;
 import entity.Apartment;
+import entity.City;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +19,8 @@ public class AddApServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-      response.sendRedirect("/add-ap.jsp");
+        request.setAttribute("g", DBConnection.getAllCities());
+        request.getRequestDispatcher("/add-ap.jsp").forward(request, response);
 
     }
 
@@ -29,6 +31,9 @@ public class AddApServlet extends HttpServlet {
         double height = Double.parseDouble(request.getParameter("height"));
         double price = Double.parseDouble(request.getParameter("price"));
         int room = Integer.parseInt(request.getParameter("room"));
+        int city_id = Integer.parseInt(request.getParameter("city_id"));
+
+        City city = DBConnection.getCityById(city_id);
 
         Apartment ap = new Apartment();
         ap.setFloor(floor);
@@ -36,6 +41,7 @@ public class AddApServlet extends HttpServlet {
         ap.setRoom(room);
         ap.setSize(size);
         ap.setPrice(price);
+        ap.setCity(city);
 
         DBConnection.addAp(ap);
 

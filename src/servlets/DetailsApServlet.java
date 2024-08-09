@@ -20,6 +20,8 @@ public class DetailsApServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
 
         request.setAttribute("kv", DBConnection.getApById(id));
+        request.setAttribute("cities", DBConnection.getAllCities());
+
 
         request.getRequestDispatcher("/details-ap.jsp").forward(request, response);
 

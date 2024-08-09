@@ -10,11 +10,11 @@ public class DBManager {
     public  static int id = 6;
 
     static {
-        collections.add(new Apartment(1, 74.4, 4, 2.75, 600000, 10));
-        collections.add(new Apartment(2, 32.2, 1, 2.75, 300000, 13));
-        collections.add(new Apartment(3, 102.2, 6, 3.0, 1500000, 11));
-        collections.add(new Apartment(4, 50.1, 2, 3.3, 1200000, 6));
-        collections.add(new Apartment(5, 180, 8, 3.6, 5000000, 12));
+        collections.add(new Apartment(1, 74.4, 4, 2.75, 600000, 10, null));
+        collections.add(new Apartment(2, 32.2, 1, 2.75, 300000, 13, null));
+        collections.add(new Apartment(3, 102.2, 6, 3.0, 1500000, 11, null));
+        collections.add(new Apartment(4, 50.1, 2, 3.3, 1200000, 6, null));
+        collections.add(new Apartment(5, 180, 8, 3.6, 5000000, 12, null));
     }
 
     public static ArrayList<Apartment> getAllApartments(){
