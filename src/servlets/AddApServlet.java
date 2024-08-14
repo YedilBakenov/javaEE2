@@ -4,6 +4,7 @@ import db.DBConnection;
 import db.DBManager;
 import entity.Apartment;
 import entity.City;
+import entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,8 +20,14 @@ public class AddApServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setAttribute("g", DBConnection.getAllCities());
-        request.getRequestDispatcher("/add-ap.jsp").forward(request, response);
+        User user =(User)request.getSession().getAttribute("currentUser");
+
+        if(user!=null){
+            request.setAttribute("g", DBConnection.getAllCities());
+            request.getRequestDispatcher("/add-ap.jsp").forward(request, response);
+        }else response.sendRedirect("/login");
+
+
 
     }
 

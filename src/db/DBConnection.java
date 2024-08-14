@@ -2,6 +2,7 @@ package db;
 
 import entity.Apartment;
 import entity.City;
+import entity.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -191,5 +192,31 @@ public class DBConnection {
         }
 
         return city;
+    }
+
+    public static User getUserByEmail(String email) {
+        User user = null;
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
+            statement.setString(1, email);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if(resultSet.next()){
+                user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setEmail(resultSet.getString("email"));
+                user.setFull_name(resultSet.getString("full_name"));
+                user.setPassword(resultSet.getString("password"));
+            }
+            resultSet.close();
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return user;
     }
 }

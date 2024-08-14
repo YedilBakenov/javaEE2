@@ -1,25 +1,29 @@
 package servlets;
 
 import db.DBConnection;
+import entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
 
-@WebServlet(value = "/main")
-public class MainServlet extends HttpServlet {
+@WebServlet(value = "/logout")
+public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setAttribute("kvarturu", DBConnection.getAllApp());
-        request.setAttribute("g", DBConnection.getAllCities());
+        User user =(User)request.getSession().getAttribute("currentUser");
 
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        if(user!=null){
+          request.getSession().removeAttribute("currentUser");
+           response.sendRedirect("/");
+        }else response.sendRedirect("/login");
 
     }
 }

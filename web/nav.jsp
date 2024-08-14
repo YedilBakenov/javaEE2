@@ -1,3 +1,4 @@
+<%@ page import="entity.User" %><% User user =(User)request.getSession().getAttribute("currentUser"); %>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(168,95,87,0.88)">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">MAIN</a>
@@ -12,6 +13,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/add-ap">ADD APARTMENT</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">LOGIN</a>
+                </li>
+                <% if(user!=null) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">LOGOUT</a>
+                </li>
+               <% } %>
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

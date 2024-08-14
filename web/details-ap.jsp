@@ -85,6 +85,9 @@
                         %>
                     </select>
                 </div>
+
+                <% if(user!=null){%>
+
                 <div class="row mt-3">
                     <div class="col-12">
                         <div>
@@ -92,7 +95,12 @@
                         </div>
                     </div>
                 </div>
+
+                <% }%>
             </form>
+
+            <% if(user!=null){%>
+
             <form action="/delete-ap?id=<%=ap.getId()%>" method="post">
                 <div class="row mt-3">
                     <div class="col-12">
@@ -102,6 +110,9 @@
                     </div>
                 </div>
             </form>
+
+
+            <% }%>
             <%
                 }
             %>
