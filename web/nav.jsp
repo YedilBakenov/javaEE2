@@ -14,6 +14,9 @@
                     <a class="nav-link" href="/add-ap">ADD APARTMENT</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/get-news">ALL NEWS</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/login">LOGIN</a>
                 </li>
                 <% if(user!=null) { %>
