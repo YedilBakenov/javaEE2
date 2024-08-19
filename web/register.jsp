@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row mt-3 justify-content-center">
         <div class="col-6">
-            <form action="/login" method="post">
+            <form action="/register" method="post">
                 <div class="row mt-3">
                     <div class="col-12">
                         <div>
@@ -38,19 +38,31 @@
                 <div class="row mt-3">
                     <div class="col-12">
                         <div>
-                            <button class="btn btn-success btn-sm">SIGN IN</button>
+                            <label>RETYPE PASSWORD</label>
+                        </div>
+                        <div class="mt-3">
+                            <input type="password" name="rePassword" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
                         <div>
-                            <a type="button" href="/register" class="btn btn-sm btn-primary">SIGN UP</a>
+                            <label>FULL NAME:</label>
+                        </div>
+                        <div class="mt-3">
+                            <input type="text" name="full_name" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div>
+                            <button class="btn btn-success btn-sm">SIGN UP</button>
                         </div>
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </div>

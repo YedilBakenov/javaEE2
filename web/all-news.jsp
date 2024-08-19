@@ -1,6 +1,4 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="entity.Apartment" %>
-<%@ page import="entity.City" %>
 <%@ page import="entity.News" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -14,14 +12,16 @@
 </div>
 <div class="container">
 
-    <% if (user != null) {%>
-
+    <% if (user != null) {
+        if (user.getRole_id() == 1) {
+    %>
     <button type="button" class="btn  mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
             style="background-color: rgba(97,168,139,0.88)">
         + ADD NEWS
     </button>
 
-    <% }%>
+    <% }
+    }%>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -35,7 +35,7 @@
                     <div class="row mt-3">
                         <div class="col-12">
                             <form action="/add-news" method="post">
-                                <% if (user!=null) {%>
+                                <% if (user != null) {%>
                                 <input type="hidden" name="userId" value="<%=user.getId()%>">
                                 <% }%>
                                 <div class="row mt-3">
@@ -68,9 +68,11 @@
                     for (News n : news) {
             %>
             <div class="p-5 mb-3" style="background-color: rgba(97,168,139,0.88)">
-                 <a class="text-decoration-none" href="/details-news?id=<%=n.getId()%>"><h1><%=n.getContent()%></h1></a>
+                <a class="text-decoration-none" href="/details-news?id=<%=n.getId()%>"><h1><%=n.getContent()%>
+                </h1></a>
                 <p>
-                    Content created by <strong> <%=n.getUser().getFull_name()%> at <%=n.getDate()%></strong>
+                    Content created by <strong><%=n.getUser().getFull_name()%> at <%=n.getDate()%>
+                </strong>
                 </p>
             </div>
             <%

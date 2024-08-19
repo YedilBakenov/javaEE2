@@ -1,8 +1,6 @@
 package servlets;
 
 import db.DBConnection;
-import entity.Apartment;
-import entity.City;
 import entity.News;
 import entity.User;
 import jakarta.servlet.ServletException;
@@ -18,20 +16,34 @@ import java.io.IOException;
 public class AddNewsServlet extends HttpServlet {
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User) request.getSession().getAttribute("currentUser");
+
+        if (user == null || user.getRole_id() == 2) {
+            response.sendRedirect("/403.jsp");
+        }
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        User user =(User)request.getSession().getAttribute("currentUser");
+
+        if(user!=null &&  user.getRole_id()==1){
+
         String content = request.getParameter("content");
         int userID = Integer.parseInt(request.getParameter("userId"));
 
-        User user = DBConnection.getUserById(userID);
+        User user1 = DBConnection.getUserById(userID);
 
         News news = new News();
         news.setContent(content);
-        news.setUser(user);
+        news.setUser(user1);
 
         DBConnection.addNews(news);
 
         response.sendRedirect("/get-news");
 
-
+        }else response.sendRedirect("/403.jsp");
     }
 }

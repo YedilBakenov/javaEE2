@@ -10,9 +10,11 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">ALL APARTMENTS</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/add-ap">ADD APARTMENT</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/get-news">ALL NEWS</a>
                 </li>

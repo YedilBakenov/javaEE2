@@ -1,7 +1,6 @@
 package servlets;
 
 import db.DBConnection;
-import db.DBManager;
 import entity.Apartment;
 import entity.City;
 import entity.User;

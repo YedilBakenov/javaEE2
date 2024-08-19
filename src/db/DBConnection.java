@@ -210,6 +210,7 @@ public class DBConnection {
                 user.setEmail(resultSet.getString("email"));
                 user.setFull_name(resultSet.getString("full_name"));
                 user.setPassword(resultSet.getString("password"));
+                user.setRole_id(resultSet.getInt("role_id"));
             }
             statement.close();
 
@@ -368,6 +369,27 @@ public class DBConnection {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+    }
+
+    public static void addUser(User newUser) {
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (email, password, full_name, role_id) " +
+                    "VALUES (?, ?, ?, ?)");
+            statement.setString(1, newUser.getEmail());
+            statement.setString(2, newUser.getPassword());
+            statement.setString(3, newUser.getFull_name());
+            statement.setInt(4, newUser.getRole_id());
+
+            statement.executeUpdate();
+            statement.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 
     }
 }
