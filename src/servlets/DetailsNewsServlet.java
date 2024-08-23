@@ -20,6 +20,7 @@ public class DetailsNewsServlet extends HttpServlet {
 
 
         request.setAttribute("news", DBConnection.getNewsById(id));
+        request.setAttribute("comments", DBConnection.getAllComments(id));
 
 
         request.getRequestDispatcher("/details-news.jsp").forward(request, response);
